@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>车间安全提示 · 现场展示 (C 窗口)</title>
+<link rel="stylesheet" href="/static/style.css">
+<link rel="stylesheet" href="/static/display.css">
+</head>
+<body>
+<div class="dtop">
+  <span class="brand">🏭 车间安全提示屏</span>
+  <select id="shift-sel" title="选择班次"></select>
+  <span id="sync" class="badge">未连接</span>
+  <span class="spacer"></span>
+  <span id="identity" class="badge">未验证身份（仅可查看）</span>
+  <button class="secondary" id="btn-login">验证身份</button>
+  <button class="ghost" id="btn-switch" style="display:none">切换人员</button>
+  <button class="secondary" id="btn-fs">全屏</button>
+  <a class="dlink" href="/admin/" target="_blank">管理端</a>
+</div>
+
+<div class="stage">
+  <img id="poster" src="/static/poster.svg" alt="车间安全宣传图">
+  <div id="poster-fallback" class="poster-fallback" style="display:none">
+    <div class="pf-title">车间安全提示</div>
+    <div class="pf-sub">SAFETY FIRST · 风险可知 · 防护到位</div>
+    <div class="pf-note">宣传图未能解码，已降级为纯色背景，提示内容全部保留在右侧卡片中。</div>
+  </div>
+  <div class="overlay">
+    <div class="ov-head">
+      <div>
+        <div id="ov-shift" class="ov-title">请选择班次</div>
+        <div id="ov-window" class="ov-sub muted"></div>
+      </div>
+      <div class="ov-right">
+        <div id="ov-updated" class="ov-sub muted">更新时间：—</div>
+        <div id="ov-frozen" class="ov-sub"></div>
+      </div>
+    </div>
+    <div id="offline-banner" class="offline" style="display:none">
+      ⚠ 设备离线：正在展示本机保留的提示（最后成功更新 <b id="offline-since"></b>）。
+      离线期间的知悉确认会暂存，恢复连接后按所绑定的<b>具体版本</b>补传；若版本已更新，需重新确认新版。
+    </div>
+    <div id="cards" class="cards"></div>
+  </div>
+</div>
+
+<div class="dfooter">
+  本系统仅传达经<b>人工审核</b>的安全提示，<b>不代替现场防护措施，也不代替设备安全联锁</b>。
+  “我已知悉”仅表示已阅读<b>该版本</b>提示，<b>不表示风险已经消除</b>。
+  旧版本确认不会自动覆盖班中增补的新风险。
+</div>
+
+<!-- 验证身份弹窗（两人共用终端：换人必须重新验证） -->
+<div id="modal-mask" class="mask" style="display:none">
+  <div class="modal">
+    <h3 id="m-title">验证身份</h3>
+    <p class="small muted" id="m-desc">无法验证身份时允许查看，但不能产生确认记录，系统也不会代填任何确认。</p>
+    <label>工号</label><input id="m-no" autocomplete="off">
+    <label>PIN</label><input id="m-pin" type="password" autocomplete="off">
+    <div id="m-extra"></div>
+    <div style="display:flex;gap:10px;margin-top:14px">
+      <button id="m-ok">验证并继续</button>
+      <button class="ghost" id="m-cancel">取消（继续仅查看）</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/static/display.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>车间安全提示 · Web 管理端</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="login" class="panel" style="max-width:420px;margin:70px auto">
+  <h3>管理端登录</h3>
+  <p class="muted small">仅管理员可维护卡片审核、班次冻结/增补/交班与撤回。</p>
+  <label>工号</label><input id="li-no" placeholder="如 A001" value="A001">
+  <label>PIN</label><input id="li-pin" type="password" value="1111">
+  <div style="margin-top:14px"><button id="li-btn">登录</button></div>
+  <p class="small muted" style="margin-top:12px">演示账号：管理员 A001 / 1111；班员 E001/2222、E002/3333
+    · <a href="/display/" style="color:#7fb8e8">前往车间展示端(C 窗口) →</a></p>
+</div>
+
+<div id="app" style="display:none">
+  <div class="topbar">
+    <span class="brand">🛠 安全提示管理端</span>
+    <div class="tabs">
+      <button data-tab="cards" class="active">卡片与审核</button>
+      <button data-tab="shifts">班次/冻结/增补</button>
+      <button data-tab="ledger">确认台账</button>
+      <button data-tab="persons">人员</button>
+      <button data-tab="events">事件</button>
+    </div>
+    <span class="spacer"></span>
+    <span class="badge" id="who"></span>
+    <button class="ghost" id="logout">退出</button>
+  </div>
+  <div style="padding:14px 20px;max-width:1280px;margin:0 auto">
+    <div class="disclaimer">
+      系统只传达<b>经人工审核</b>的提示，不代替现场防护或设备联锁；撤回不删除历史；
+      班中增补/换版会产生新条目，旧确认不迁移、不覆盖新风险。
+    </div>
+    <div id="tab-cards"></div>
+    <div id="tab-shifts" style="display:none"></div>
+    <div id="tab-ledger" style="display:none"></div>
+    <div id="tab-persons" style="display:none"></div>
+    <div id="tab-events" style="display:none"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script src="/static/admin.js"></script>
+</body>
+</html>

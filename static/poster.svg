@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f2b3d"/>
+      <stop offset="0.55" stop-color="#14506b"/>
+      <stop offset="1" stop-color="#1d6f5e"/>
+    </linearGradient>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <!-- 工厂剪影 -->
+  <g opacity="0.85">
+    <rect x="120" y="520" width="180" height="300" fill="#0b2230"/>
+    <rect x="330" y="430" width="120" height="390" fill="#0b2230"/>
+    <rect x="480" y="560" width="220" height="260" fill="#0b2230"/>
+    <rect x="740" y="470" width="140" height="350" fill="#0b2230"/>
+    <polygon points="740,470 810,410 880,470" fill="#0b2230"/>
+    <rect x="920" y="540" width="260" height="280" fill="#0b2230"/>
+    <rect x="1220" y="480" width="150" height="340" fill="#0b2230"/>
+    <rect x="1400" y="600" width="120" height="220" fill="#0b2230"/>
+    <rect x="350" y="300" width="26" height="140" fill="#0b2230"/>
+    <rect x="1245" y="330" width="30" height="160" fill="#0b2230"/>
+    <g fill="#ffd964">
+      <rect x="150" y="560" width="24" height="24"/><rect x="210" y="560" width="24" height="24"/>
+      <rect x="360" y="470" width="20" height="20"/><rect x="400" y="470" width="20" height="20"/>
+      <rect x="520" y="600" width="26" height="26"/><rect x="600" y="600" width="26" height="26"/>
+      <rect x="960" y="580" width="22" height="22"/><rect x="1020" y="580" width="22" height="22"/>
+      <rect x="1080" y="580" width="22" height="22"/><rect x="1260" y="520" width="22" height="22"/>
+    </g>
+  </g>
+  <!-- 标题区 -->
+  <text x="800" y="140" text-anchor="middle" font-family="sans-serif" font-size="84"
+        font-weight="bold" fill="#ffffff" letter-spacing="14">车间安全提示</text>
+  <text x="800" y="205" text-anchor="middle" font-family="sans-serif" font-size="30"
+        fill="#9fd8ff" letter-spacing="8">SAFETY FIRST · 风险可知 · 防护到位</text>
+  <rect x="560" y="232" width="480" height="6" rx="3" fill="#ffb020"/>
+</svg>
