@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1b2a"/><stop offset="1" stop-color="#1b263b"/>
+    </linearGradient>
+    <pattern id="hazard" width="80" height="80" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="40" height="80" fill="#f4a300"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect x="0" y="980" width="1920" height="100" fill="url(#hazard)" opacity="0.18"/>
+  <g opacity="0.10" stroke="#f4a300" stroke-width="3" fill="none">
+    <polygon points="120,820 220,640 320,820"/><rect x="1500" y="180" width="240" height="240"/>
+    <circle cx="1650" cy="760" r="120"/><path d="M120 300 L300 180 L480 300"/>
+  </g>
+  <text x="960" y="180" text-anchor="middle" font-family="sans-serif" font-size="110" font-weight="bold" fill="#f4a300">安全第一</text>
+  <text x="960" y="300" text-anchor="middle" font-family="sans-serif" font-size="64" fill="#e0e1dd">预防为主 · 综合治理</text>
+  <text x="960" y="900" text-anchor="middle" font-family="sans-serif" font-size="40" fill="#9db0c4">提示系统仅用于传达经审核的安全提示，不代替现场防护与设备联锁</text>
+</svg>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C 窗口 · 当班安全提示</title>
+<link rel="stylesheet" href="/c/styles.css">
+</head>
+<body>
+  <!-- 宣传图层 -->
+  <img id="poster" class="poster" src="/assets/poster.svg" alt="车间安全宣传图"
+       onerror="this.classList.add('img-fail')">
+  <div class="poster-fallback" aria-hidden="true">安全第一 · 预防为主 · 综合治理</div>
+
+  <div class="overlay">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">安</span>
+        <div>
+          <h1>当班安全提示</h1>
+          <div class="subtitle" id="shiftName">未连接到服务…</div>
+        </div>
+      </div>
+      <div class="clock-box">
+        <div class="clock" id="clock">--:--:--</div>
+        <div class="clock-sub" id="clockSub"></div>
+      </div>
+      <div class="top-actions">
+        <button class="btn btn-ghost" id="fullscreenBtn" type="button">进入全屏</button>
+        <button class="btn btn-ghost" id="identifyBtn" type="button">人员验证</button>
+      </div>
+    </header>
+
+    <div id="offlineBanner" class="offline-banner hidden">
+      <strong>● 设备离线</strong>
+      <span>当前显示的是最后一次同步的提示内容，更新时间：<b id="cachedAt">—</b>。确认功能已暂停，联网后恢复，不会生成任何离线确认。</span>
+    </div>
+
+    <main class="content">
+      <section class="panel summary-panel">
+        <div class="summary-item"><span class="num" id="sumFrozen">0</span><span class="lbl">整班冻结</span></div>
+        <div class="summary-item"><span class="num urgent" id="sumSupplement">0</span><span class="lbl">班中增补</span></div>
+        <div class="summary-item"><span class="num rev" id="sumRevision">0</span><span class="lbl">班中换版</span></div>
+        <div class="summary-item"><span class="num done" id="sumDone">0/0</span><span class="lbl">已确认（分版本）</span></div>
+        <div class="summary-item"><span class="num muted" id="sumCarried">0</span><span class="lbl">交班结转</span></div>
+        <div class="summary-members" id="memberChips"></div>
+      </section>
+
+      <section class="panel" id="catchupPanel" hidden>
+        <h2 class="panel-title late-title">⏰ 交班后迟到回执（您有未完成确认）</h2>
+        <div id="catchupList" class="catchup-list"></div>
+      </section>
+
+      <section class="panel">
+        <h2 class="panel-title">本班风险卡片 <span class="title-hint">确认绑定具体卡片修订；旧版确认不会覆盖新风险</span></h2>
+        <div id="cardGrid" class="card-grid">
+          <div class="loading">正在加载…</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="disclaimer">
+      ⚠ 本系统仅传达经用户审核的提示信息，<b>不代替现场防护设施或设备安全联锁</b>。
+      点击“确认已知悉”仅表示人员已阅读该<b>特定修订</b>，<b>不表示风险已经消除</b>。
+      <span class="foot-tools">
+        <a href="/admin/" target="_blank" rel="noopener">管理端</a>
+        <button type="button" class="linklike" id="fsBottomBtn">全屏</button>
+        <button type="button" class="linklike" id="idBottomBtn">验证身份</button>
+      </span>
+    </footer>
+  </div>
+
+  <!-- 身份验证弹窗（两人共用终端：每人确认前重新验证） -->
+  <div class="modal-backdrop hidden" id="authModal">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <h3 id="authTitle">人员身份验证</h3>
+      <p class="modal-hint">工号（如 p_wang）与 4–6 位 PIN。验证仅用于本人确认；无法验证身份时仍可查看提示，但不能确认。</p>
+      <label>工号<input id="empId" autocomplete="off" placeholder="p_wang / p_li / p_zhao / p_sun"></label>
+      <label>PIN<input id="empPin" type="password" inputmode="numeric" autocomplete="off" placeholder="123456"></label>
+      <div class="auth-error" id="authError"></div>
+      <div class="modal-actions">
+        <button class="btn" id="authCancel" type="button">取消（仅查看）</button>
+        <button class="btn btn-primary" id="authSubmit" type="button">验证</button>
+      </div>
+      <div class="demo-hint">演示账号：p_wang/123456，p_li/234567，p_zhao/345678，p_sun/456789</div>
+    </div>
+  </div>
+
+  <!-- 确认弹窗 -->
+  <div class="modal-backdrop hidden" id="confirmModal">
+    <div class="modal" role="dialog" aria-modal="true">
+      <h3 id="confirmTitle">确认已知悉</h3>
+      <div class="confirm-meta" id="confirmMeta"></div>
+      <p class="confirm-text" id="confirmText"></p>
+      <label class="checkline"><input type="checkbox" id="ackClock"> 我确认终端时间与实际一致</label>
+      <div class="auth-error" id="confirmError"></div>
+      <div class="modal-actions">
+        <button class="btn" id="confirmCancel" type="button">取消</button>
+        <button class="btn btn-warn" id="confirmSubmit" type="button">确认已知悉（不代表风险消除）</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 结果提示 -->
+  <div class="toast hidden" id="toast"></div>
+
+<script src="/c/app.js"></script>
+</body>
+</html>

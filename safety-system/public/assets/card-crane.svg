@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#10202f"/>
+  <path d="M60 70 L580 70 L560 95 L80 95 Z" fill="#f4a300"/>
+  <line x1="140" y1="95" x2="140" y2="120" stroke="#e0e1dd" stroke-width="6"/>
+  <line x1="140" y1="120" x2="140" y2="230" stroke="#8d99ae" stroke-width="3"/>
+  <path d="M110 230 L170 230 L150 275 L130 275 Z" fill="#e0e1dd"/>
+  <g stroke="#d62828" stroke-width="4" stroke-dasharray="14 10" opacity="0.9">
+    <line x1="60" y1="300" x2="260" y2="300"/><line x1="60" y1="300" x2="60" y2="230"/>
+  </g>
+  <text x="330" y="200" font-family="sans-serif" font-size="42" font-weight="bold" fill="#f4a300">吊物下方</text>
+  <text x="330" y="258" font-family="sans-serif" font-size="42" font-weight="bold" fill="#d62828">严禁站人</text>
+</svg>

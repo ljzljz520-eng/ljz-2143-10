@@ -1,0 +1,175 @@
+{
+  "meta": {
+    "created_at": 1791118393835,
+    "version": 1
+  },
+  "persons": [
+    {
+      "id": "p_wang",
+      "name": "王建国",
+      "pin_hash": "1f17577e54f33991db0069c65e45cb9d9ed96d21d2f159e5d425eb96f89bc935",
+      "role": "班长",
+      "active": true,
+      "created_at": 1791118393835
+    },
+    {
+      "id": "p_li",
+      "name": "李梅",
+      "pin_hash": "7783534695caffb714acf2522f7a2fccc78c7c7a322f207ab9d3fd1f957c4c6e",
+      "role": "操作工",
+      "active": true,
+      "created_at": 1791118393835
+    },
+    {
+      "id": "p_zhao",
+      "name": "赵强",
+      "pin_hash": "0542d1c20a66e7ed9447166cb1bd58e46b790ded455d94bd134caeafc01446f4",
+      "role": "维修工",
+      "active": true,
+      "created_at": 1791118393835
+    },
+    {
+      "id": "p_sun",
+      "name": "孙丽",
+      "pin_hash": "7b93aeb2cd350bf4e4beffe849c1446a5c18db85a1b7951097f4e9d8fa7c4286",
+      "role": "操作工",
+      "active": true,
+      "created_at": 1791118393835
+    }
+  ],
+  "admins": [
+    {
+      "id": "admin",
+      "username": "admin",
+      "password_hash": "98bc8b9a1a54554fd49d244c8fff814918becacc8631e22e5f34eec3c845bb64",
+      "name": "系统管理员",
+      "created_at": 1791118393835
+    }
+  ],
+  "cards": [
+    {
+      "id": "card_crane",
+      "title": "行车下方严禁站人",
+      "body": "吊装作业半径内设置警戒线，任何人不得在吊物下方停留或通行。起吊前由起重指挥确认警戒到位。",
+      "hazard": "物体打击 / 起重伤害",
+      "owner_person_id": "p_wang",
+      "image_url": "/assets/card-crane.svg",
+      "tags": [],
+      "current_revision": 1,
+      "published": true,
+      "withdrawn": false,
+      "created_at": 1791118393835,
+      "created_by": "admin"
+    },
+    {
+      "id": "card_lock",
+      "title": "检修上锁挂牌 LOTO",
+      "body": "3号冲压线检修前必须切断电源、气源并挂牌上锁，钥匙由检修负责人保管，试运行前逐人确认撤离。",
+      "hazard": "机械伤害 / 触电",
+      "owner_person_id": "p_zhao",
+      "image_url": "/assets/card-lock.svg",
+      "tags": [],
+      "current_revision": 1,
+      "published": true,
+      "withdrawn": false,
+      "created_at": 1791118393835,
+      "created_by": "admin"
+    },
+    {
+      "id": "card_fire",
+      "title": "焊接动火作业许可",
+      "body": "焊接区10米内清除可燃物，配备灭火器并设监火人；作业完毕留守观察不少于30分钟。",
+      "hazard": "火灾 / 灼烫",
+      "owner_person_id": "p_li",
+      "image_url": "/assets/card-fire.svg",
+      "tags": [],
+      "current_revision": 1,
+      "published": true,
+      "withdrawn": false,
+      "created_at": 1791118393835,
+      "created_by": "admin"
+    },
+    {
+      "id": "card_noise",
+      "title": "高噪声区佩戴耳塞",
+      "body": "空压机房及打磨工位噪声超过85dB(A)，进入前佩戴耳塞，连续暴露不超过2小时/班。",
+      "hazard": "噪声聋",
+      "owner_person_id": "p_sun",
+      "image_url": null,
+      "tags": [
+        "PPE"
+      ],
+      "current_revision": 1,
+      "published": true,
+      "withdrawn": false,
+      "created_at": 1791118393835,
+      "created_by": "admin"
+    }
+  ],
+  "card_revisions": [
+    {
+      "id": "rev_3ecca4ea7ecf",
+      "card_id": "card_crane",
+      "revision": 1,
+      "title": "行车下方严禁站人",
+      "body": "吊装作业半径内设置警戒线，任何人不得在吊物下方停留或通行。起吊前由起重指挥确认警戒到位。",
+      "hazard": "物体打击 / 起重伤害",
+      "owner_person_id": "p_wang",
+      "image_url": "/assets/card-crane.svg",
+      "tags": [],
+      "published_at": 1791118393835,
+      "published_by": "admin",
+      "change_note": "初次发布"
+    },
+    {
+      "id": "rev_9300c752e0c1",
+      "card_id": "card_lock",
+      "revision": 1,
+      "title": "检修上锁挂牌 LOTO",
+      "body": "3号冲压线检修前必须切断电源、气源并挂牌上锁，钥匙由检修负责人保管，试运行前逐人确认撤离。",
+      "hazard": "机械伤害 / 触电",
+      "owner_person_id": "p_zhao",
+      "image_url": "/assets/card-lock.svg",
+      "tags": [],
+      "published_at": 1791118393835,
+      "published_by": "admin",
+      "change_note": "初次发布"
+    },
+    {
+      "id": "rev_46765fbdfcb9",
+      "card_id": "card_fire",
+      "revision": 1,
+      "title": "焊接动火作业许可",
+      "body": "焊接区10米内清除可燃物，配备灭火器并设监火人；作业完毕留守观察不少于30分钟。",
+      "hazard": "火灾 / 灼烫",
+      "owner_person_id": "p_li",
+      "image_url": "/assets/card-fire.svg",
+      "tags": [],
+      "published_at": 1791118393835,
+      "published_by": "admin",
+      "change_note": "初次发布"
+    },
+    {
+      "id": "rev_42fe57505325",
+      "card_id": "card_noise",
+      "revision": 1,
+      "title": "高噪声区佩戴耳塞",
+      "body": "空压机房及打磨工位噪声超过85dB(A)，进入前佩戴耳塞，连续暴露不超过2小时/班。",
+      "hazard": "噪声聋",
+      "owner_person_id": "p_sun",
+      "image_url": null,
+      "tags": [
+        "PPE"
+      ],
+      "published_at": 1791118393835,
+      "published_by": "admin",
+      "change_note": "初次发布"
+    }
+  ],
+  "shifts": [],
+  "shift_cards": [],
+  "memberships": [],
+  "confirmations": [],
+  "handovers": [],
+  "audit_logs": []
+}

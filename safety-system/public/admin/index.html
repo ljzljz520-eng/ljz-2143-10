@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>安全提示 · Web 管理端</title>
+<link rel="stylesheet" href="/admin/styles.css">
+</head>
+<body>
+<!-- 登录 -->
+<div id="loginView" class="login-wrap">
+  <form class="login-card" id="loginForm">
+    <h1>安全提示系统 · 管理端</h1>
+    <label>管理员账号<input id="lgUser" value="admin" autocomplete="username"></label>
+    <label>密码<input id="lgPass" type="password" value="admin123" autocomplete="current-password"></label>
+    <div class="err" id="lgErr"></div>
+    <button class="btn btn-primary" type="submit">登录</button>
+    <div class="demo-hint">演示：admin / admin123。人员PIN见 C 窗口提示。</div>
+    <a class="alt-link" href="/c/">→ 前往 C 窗口（展示端）</a>
+  </form>
+</div>
+
+<!-- 主界面 -->
+<div id="appView" hidden>
+  <header class="topbar">
+    <div class="logo">🛠 安全提示管理端</div>
+    <nav class="tabs">
+      <button class="tab active" data-tab="shifts">班次</button>
+      <button class="tab" data-tab="cards">卡片与修订</button>
+      <button class="tab" data-tab="persons">人员</button>
+      <button class="tab" data-tab="traces">确认追溯</button>
+      <button class="tab" data-tab="audit">审计日志</button>
+    </nav>
+    <div class="who"><span id="whoName"></span>
+      <button class="btn btn-sm" id="logoutBtn" type="button">退出</button>
+      <a class="btn btn-sm" href="/c/" target="_blank" rel="noopener">C窗口</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- 班次 -->
+    <section class="tabpane active" id="tab-shifts">
+      <div class="pane-head">
+        <h2>班次管理</h2>
+        <button class="btn btn-primary" id="newShiftBtn">+ 新建班次</button>
+      </div>
+      <p class="explain">开班即<b>冻结</b>：把当时所有已发布卡片快照为「整班冻结清单」；开班后可<b>增补紧急卡</b>。
+      交班时未完成确认<b>结转</b>，支持迟到回执。</p>
+      <div id="shiftList" class="grid"></div>
+      <div id="shiftDetail" class="detail-panel" hidden></div>
+    </section>
+
+    <!-- 卡片 -->
+    <section class="tabpane" id="tab-cards">
+      <div class="pane-head">
+        <h2>卡片与修订</h2>
+        <button class="btn btn-primary" id="newCardBtn">+ 新建卡片</button>
+      </div>
+      <p class="explain">修改卡片内容 = <b>发布新版（修订）</b>。进行中的班次会把旧版未确认项迁移为「已被新版取代」，
+      并为<b>全员</b>（含已确认旧版者）生成新版本的待确认——旧卡确认不会覆盖新风险。</p>
+      <div id="cardList" class="grid"></div>
+    </section>
+
+    <!-- 人员 -->
+    <section class="tabpane" id="tab-persons">
+      <div class="pane-head"><h2>人员与 PIN</h2>
+        <button class="btn btn-primary" id="newPersonBtn">+ 新增人员</button></div>
+      <p class="explain">确认必须绑定<b>已验证人员</b>（工号+PIN）。两人共用终端时，每人确认前都要重新验证。</p>
+      <table class="table" id="personTable">
+        <thead><tr><th>工号</th><th>姓名</th><th>角色</th><th>状态</th><th>操作</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- 追溯 -->
+    <section class="tabpane" id="tab-traces">
+      <div class="pane-head"><h2>确认追溯（谁确认了哪一版）</h2></div>
+      <p class="explain">每条记录都精确到<b>卡片修订号 + 班次 + 人员</b>，而不只是完成百分比；
+      含迟到回执、终端时钟偏差（clock skew）等标记。</p>
+      <div class="filters">
+        <select id="fShift"><option value="">全部班次</option></select>
+        <select id="fCard"><option value="">全部卡片</option></select>
+        <select id="fPerson"><option value="">全部人员</option></select>
+        <button class="btn" id="traceRefresh">刷新</button>
+      </div>
+      <table class="table" id="traceTable">
+        <thead><tr><th>时间</th><th>人员</th><th>班次</th><th>卡片</th><th>修订</th><th>来源</th><th>状态</th><th>时钟偏差</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- 审计 -->
+    <section class="tabpane" id="tab-audit">
+      <div class="pane-head"><h2>审计日志</h2><button class="btn" id="auditRefresh">刷新</button></div>
+      <table class="table" id="auditTable">
+        <thead><tr><th>时间</th><th>操作者</th><th>动作</th><th>详情</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<!-- 通用模态 -->
+<div class="modal-backdrop hidden" id="modal">
+  <div class="modal" id="modalBox"></div>
+</div>
+<div class="toast hidden" id="toast"></div>
+
+<script src="/admin/app.js"></script>
+</body>
+</html>

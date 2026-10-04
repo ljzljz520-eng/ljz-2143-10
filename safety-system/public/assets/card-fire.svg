@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360">
+  <rect width="640" height="360" fill="#10202f"/>
+  <path d="M320 60 C 250 150 240 200 280 250 C 240 235 210 200 220 150 C 170 210 160 300 320 320 C 480 300 470 210 420 150 C 430 200 400 235 360 250 C 400 200 390 150 320 60 Z" fill="#f4a300"/>
+  <path d="M320 170 C 290 215 285 245 320 275 C 355 245 350 215 320 170 Z" fill="#d62828"/>
+  <text x="110" y="120" font-family="sans-serif" font-size="44" font-weight="bold" fill="#e0e1dd">动火许可</text>
+  <text x="110" y="172" font-family="sans-serif" font-size="30" fill="#9db0c4">监火 · 灭火器材</text>
+</svg>

@@ -1,0 +1,16 @@
+{
+  "name": "workshop-safety-prompt-system",
+  "version": "1.0.0",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "node /tmp/accept.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "车间安全提示展示系统：C窗口展示 + Web管理端 + 服务API",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
